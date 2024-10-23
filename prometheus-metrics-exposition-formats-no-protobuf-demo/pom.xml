@@ -90,30 +90,19 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>3.7.1</version>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${org.springframework.boot.version}</version>
 				<configuration>
-					<archive>
-						<manifest>
-							<mainClass>${mainClass}</mainClass>
-						</manifest>
-						<manifestEntries>
-							<Multi-Release>true</Multi-Release>
-						</manifestEntries>
-					</archive>
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
-					<appendAssemblyId>false</appendAssemblyId>
+					<mainClass>${mainClass}</mainClass>
 				</configuration>
 				<executions>
 					<execution>
-						<id>make-assembly</id> <!-- this is used for inheritance merges -->
-						<phase>package</phase> <!-- bind to the packaging phase -->
+						<id>repackage</id>
 						<goals>
-							<goal>single</goal>
+							<goal>repackage</goal>
 						</goals>
+						<phase>package</phase>
 					</execution>
 				</executions>
 			</plugin>
