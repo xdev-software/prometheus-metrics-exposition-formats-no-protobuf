@@ -7,11 +7,11 @@
 	<parent>
 		<groupId>software.xdev</groupId>
 		<artifactId>prometheus-metrics-exposition-formats-no-protobuf-root</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.0.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>prometheus-metrics-exposition-formats-no-protobuf-demo</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<organization>
