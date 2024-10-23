@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<licensePluginReport goal="FORMAT" timestamp="1729675971275">
+    <module artifactId="prometheus-metrics-exposition-formats-no-protobuf" groupId="software.xdev" version="1.0.0"/>
+    <files>
+        <file path="src/main/java/io/prometheus/metrics/expositionformats/PrometheusProtobufWriter.java" result="NOOP"/>
+    </files>
+</licensePluginReport>
