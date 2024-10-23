@@ -4,7 +4,7 @@
 
 # prometheus-metrics-exposition-formats-no-protobuf
 
-This is module re-configures [prometheus-metrics-exposition-formats](https://github.com/prometheus/client_java) to remove [protobuf](https://github.com/protocolbuffers/protobuf).
+Reconfigures [prometheus-metrics-exposition-formats](https://github.com/prometheus/client_java) to remove [protobuf](https://github.com/protocolbuffers/protobuf).
 
 This module is designed to integrate with [Spring Boot Actuator (Prometheus)](https://docs.spring.io/spring-boot/api/rest/actuator/prometheus.html) or similar services.
 
