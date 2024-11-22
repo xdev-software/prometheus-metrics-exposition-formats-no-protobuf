@@ -6,7 +6,7 @@
 
 	<groupId>software.xdev</groupId>
 	<artifactId>prometheus-metrics-exposition-formats-no-protobuf</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>2.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>prometheus-metrics-exposition-formats-no-protobuf</name>
@@ -53,19 +53,7 @@
 		<dependency>
 			<groupId>io.prometheus</groupId>
 			<artifactId>prometheus-metrics-exposition-formats</artifactId>
-			<version>1.3.2</version>
-			<exclusions>
-				<!-- On <= 1.3.1 -->
-				<exclusion>
-					<groupId>io.prometheus</groupId>
-					<artifactId>prometheus-metrics-shaded-protobuf</artifactId>
-				</exclusion>
-				<!-- Exclude if they ever not shade it -->
-				<exclusion>
-					<groupId>com.google.protobuf</groupId>
-					<artifactId>protobuf-java</artifactId>
-				</exclusion>
-			</exclusions>
+			<version>1.3.3</version>
 		</dependency>
 	</dependencies>
 
@@ -167,7 +155,7 @@
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
-						<phase>verify</phase>
+						<phase>package</phase>
 						<goals>
 							<goal>jar</goal>
 						</goals>
@@ -185,10 +173,48 @@
 				<executions>
 					<execution>
 						<id>attach-sources</id>
-						<phase>verify</phase>
+						<phase>package</phase>
 						<goals>
 							<goal>jar-no-fork</goal>
 						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.6.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<!-- Otherwise dependencies are missing -->
+							<promoteTransitiveDependencies>true</promoteTransitiveDependencies>
+							<!-- Also include sources -->
+							<shadeSourcesContent>true</shadeSourcesContent>
+							<createSourcesJar>true</createSourcesJar>
+							<artifactSet>
+								<includes>
+									<include>io.prometheus:prometheus-metrics-exposition-formats</include>
+								</includes>
+							</artifactSet>
+							<filters>
+								<filter>
+									<artifact>io.prometheus:prometheus-metrics-exposition-formats</artifact>
+									<excludes>
+										<exclude>META-INF/**</exclude>
+										<exclude>io/prometheus/metrics/shaded/**</exclude>
+										<exclude>io/prometheus/metrics/expositionformats/generated/**</exclude>
+										<exclude>io/prometheus/metrics/expositionformats/PrometheusProtobufWriter.*
+										</exclude>
+									</excludes>
+								</filter>
+							</filters>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>

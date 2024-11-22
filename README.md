@@ -12,13 +12,21 @@ This module is designed to integrate with [Spring Boot Actuator (Prometheus)](ht
 
 1. [Prometheus Protobuf format is obsolete/experimental](https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md#protobuf-format), the chance that it's used is near 0
 2. The additional library can result in additional attack vectors. For example in [CVE-2024-7254](https://github.com/protocolbuffers/protobuf/security/advisories/GHSA-735f-pc8j-v9w8)
-    * If the dependency is [reshaded](https://maven.apache.org/plugins/maven-shade-plugin/) it may not be detected by vulnerability scanners (as is the case in ``prometheus.io:prometheus-metrics-exposition-formats <= 1.3.1``)
+    * If the dependency is [reshaded](https://maven.apache.org/plugins/maven-shade-plugin/) it may not be detected by vulnerability scanners (as is the case in ``io.prometheus:prometheus-metrics-exposition-formats <= 1.3.1``)
 3. The protobuf dependency is huge (around 10x bigger) in comparison to the other libraries
 
 _See also [prometheus/client_java#1173](https://github.com/prometheus/client_java/issues/1173)_
 
 ## Installation
 [Installation guide for the latest release](https://github.com/xdev-software/prometheus-metrics-exposition-formats-no-protobuf/releases/latest#Installation)
+
+### Compatibility with ``io.prometheus:prometheus-metrics-exposition-formats``
+
+| ``io.prometheus:prometheus-metrics-exposition-formats`` version | ``prometheus-metrics-exposition-formats-no-protobuf`` version |
+| --- | --- |
+| [Upcoming](https://github.com/prometheus/client_java/pull/1190) | No longer required |
+| 1.3.2+ | ``2`` |
+| < 1.3.2 | ``1`` |
 
 ### Spring Boot Actuator
 
