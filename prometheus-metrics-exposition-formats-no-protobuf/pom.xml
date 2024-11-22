@@ -5,20 +5,20 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>software.xdev</groupId>
-	<artifactId>template-placeholder</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<artifactId>prometheus-metrics-exposition-formats-no-protobuf</artifactId>
+	<version>2.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>template-placeholder</name>
-	<description>template-placeholder</description>
-	<url>https://github.com/xdev-software/template-placeholder</url>
+	<name>prometheus-metrics-exposition-formats-no-protobuf</name>
+	<description>prometheus-metrics-exposition-formats-no-protobuf</description>
+	<url>https://github.com/xdev-software/prometheus-metrics-exposition-formats-no-protobuf</url>
 
 	<scm>
-		<url>https://github.com/xdev-software/template-placeholder</url>
-		<connection>scm:git:https://github.com/xdev-software/template-placeholder.git</connection>
+		<url>https://github.com/xdev-software/prometheus-metrics-exposition-formats-no-protobuf</url>
+		<connection>scm:git:https://github.com/xdev-software/prometheus-metrics-exposition-formats-no-protobuf.git</connection>
 	</scm>
 
-	<inceptionYear>2023</inceptionYear>
+	<inceptionYear>2024</inceptionYear>
 
 	<organization>
 		<name>XDEV Software</name>
@@ -48,6 +48,14 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>io.prometheus</groupId>
+			<artifactId>prometheus-metrics-exposition-formats</artifactId>
+			<version>1.3.3</version>
+		</dependency>
+	</dependencies>
 
 	<repositories>
 		<!-- The order of definitions matters. Explicitly defining central here 
@@ -169,6 +177,44 @@
 						<goals>
 							<goal>jar-no-fork</goal>
 						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.6.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<!-- Otherwise dependencies are missing -->
+							<promoteTransitiveDependencies>true</promoteTransitiveDependencies>
+							<!-- Also include sources -->
+							<shadeSourcesContent>true</shadeSourcesContent>
+							<createSourcesJar>true</createSourcesJar>
+							<artifactSet>
+								<includes>
+									<include>io.prometheus:prometheus-metrics-exposition-formats</include>
+								</includes>
+							</artifactSet>
+							<filters>
+								<filter>
+									<artifact>io.prometheus:prometheus-metrics-exposition-formats</artifact>
+									<excludes>
+										<exclude>META-INF/**</exclude>
+										<exclude>io/prometheus/metrics/shaded/**</exclude>
+										<exclude>io/prometheus/metrics/expositionformats/generated/**</exclude>
+										<exclude>io/prometheus/metrics/expositionformats/PrometheusProtobufWriter.*
+										</exclude>
+									</excludes>
+								</filter>
+							</filters>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
