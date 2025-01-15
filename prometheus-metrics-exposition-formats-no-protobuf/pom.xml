@@ -52,8 +52,15 @@
 	<dependencies>
 		<dependency>
 			<groupId>io.prometheus</groupId>
-			<artifactId>prometheus-metrics-exposition-formats</artifactId>
-			<version>1.3.3</version>
+			<artifactId>prometheus-metrics-exposition-textformats</artifactId>
+			<version>1.3.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>5.11.3</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
@@ -183,40 +190,8 @@
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>3.6.0</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-						<configuration>
-							<!-- Otherwise dependencies are missing -->
-							<promoteTransitiveDependencies>true</promoteTransitiveDependencies>
-							<!-- Also include sources -->
-							<shadeSourcesContent>true</shadeSourcesContent>
-							<createSourcesJar>true</createSourcesJar>
-							<artifactSet>
-								<includes>
-									<include>io.prometheus:prometheus-metrics-exposition-formats</include>
-								</includes>
-							</artifactSet>
-							<filters>
-								<filter>
-									<artifact>io.prometheus:prometheus-metrics-exposition-formats</artifact>
-									<excludes>
-										<exclude>META-INF/**</exclude>
-										<exclude>io/prometheus/metrics/shaded/**</exclude>
-										<exclude>io/prometheus/metrics/expositionformats/generated/**</exclude>
-										<exclude>io/prometheus/metrics/expositionformats/PrometheusProtobufWriter.*
-										</exclude>
-									</excludes>
-								</filter>
-							</filters>
-						</configuration>
-					</execution>
-				</executions>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.5.1</version>
 			</plugin>
 		</plugins>
 	</build>

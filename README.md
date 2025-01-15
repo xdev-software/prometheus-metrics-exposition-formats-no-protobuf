@@ -24,7 +24,7 @@ _See also [prometheus/client_java#1173](https://github.com/prometheus/client_jav
 
 | ``io.prometheus:prometheus-metrics-exposition-formats`` version | ``prometheus-metrics-exposition-formats-no-protobuf`` version |
 | --- | --- |
-| 1.3.4+ | [No longer required](https://prometheus.github.io/client_java/exporters/formats/#exclude-protobuf-exposition-format) |
+| 1.3.4+ | [``3`` (optional)](./CHANGELOG.md#300) |
 | 1.3.2+ | ``2`` |
 | < 1.3.2 | ``1`` |
 
