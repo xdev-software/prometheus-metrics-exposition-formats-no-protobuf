@@ -22,7 +22,11 @@ import io.prometheus.metrics.config.PrometheusProperties;
 /**
  * Fork of original. Disables Protobuf completely
  */
-@SuppressWarnings({"checkstyle:FinalClass", "unused"})
+@SuppressWarnings({
+	"checkstyle:FinalClass",
+	"unused",
+	"java:S1172",
+	"PMD.ClassWithOnlyPrivateConstructorsShouldBeFinal"})
 public class ExpositionFormats
 {
 	private final PrometheusTextFormatWriter prometheusTextFormatWriter;
