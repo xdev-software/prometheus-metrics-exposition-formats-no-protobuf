@@ -22,7 +22,7 @@ import io.prometheus.metrics.model.snapshots.MetricSnapshots;
 
 
 /**
- * Fork of original that removes Protobuf
+ * Fork of original. Removes Protobuf
  */
 @SuppressWarnings("unused")
 public class PrometheusProtobufWriter implements ExpositionFormatWriter
