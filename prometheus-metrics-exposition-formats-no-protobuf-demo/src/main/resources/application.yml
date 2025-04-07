@@ -1,0 +1,14 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        # Env is potentially security sensitive so better hide it
+        exclude: "env"
+  endpoint:
+    health:
+      show-details: "when-authorized"
+  health:
+    # Kubernetes probes
+    probes:
+      enabled: true
