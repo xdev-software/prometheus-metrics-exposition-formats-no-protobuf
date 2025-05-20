@@ -28,7 +28,7 @@
 
 		<mainClass>software.xdev.Application</mainClass>
 
-		<org.springframework.boot.version>3.4.1</org.springframework.boot.version>
+		<org.springframework.boot.version>3.4.5</org.springframework.boot.version>
 	</properties>
 
 	<dependencyManagement>
@@ -81,7 +81,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.13.0</version>
+				<version>3.14.0</version>
 				<configuration>
 					<release>${maven.compiler.release}</release>
 					<compilerArgs>
