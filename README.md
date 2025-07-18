@@ -1,6 +1,5 @@
 [![Latest version](https://img.shields.io/maven-central/v/software.xdev/prometheus-metrics-exposition-formats-no-protobuf?logo=apache%20maven)](https://mvnrepository.com/artifact/software.xdev/prometheus-metrics-exposition-formats-no-protobuf)
 [![Build](https://img.shields.io/github/actions/workflow/status/xdev-software/prometheus-metrics-exposition-formats-no-protobuf/check-build.yml?branch=develop)](https://github.com/xdev-software/prometheus-metrics-exposition-formats-no-protobuf/actions/workflows/check-build.yml?query=branch%3Adevelop)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=xdev-software_prometheus-metrics-exposition-formats-no-protobuf&metric=alert_status)](https://sonarcloud.io/dashboard?id=xdev-software_prometheus-metrics-exposition-formats-no-protobuf)
 
 # prometheus-metrics-exposition-formats-no-protobuf
 
