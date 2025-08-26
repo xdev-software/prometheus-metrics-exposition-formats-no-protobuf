@@ -15,9 +15,9 @@
  */
 package io.prometheus.metrics.expositionformats;
 
-import java.io.IOException;
 import java.io.OutputStream;
 
+import io.prometheus.metrics.config.EscapingScheme;
 import io.prometheus.metrics.model.snapshots.MetricSnapshots;
 
 
@@ -40,7 +40,10 @@ public class PrometheusProtobufWriter implements ExpositionFormatWriter
 	}
 	
 	@Override
-	public void write(final OutputStream out, final MetricSnapshots metricSnapshots) throws IOException
+	public void write(
+		final OutputStream out,
+		final MetricSnapshots metricSnapshots,
+		final EscapingScheme escapingScheme)
 	{
 		// Do nothing
 	}

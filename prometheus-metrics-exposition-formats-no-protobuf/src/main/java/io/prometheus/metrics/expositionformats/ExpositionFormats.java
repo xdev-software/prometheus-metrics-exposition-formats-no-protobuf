@@ -46,13 +46,19 @@ public class ExpositionFormats
 		return init(PrometheusProperties.get().getExporterProperties());
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static ExpositionFormats init(final ExporterProperties properties)
 	{
 		return new ExpositionFormats(
 			null,
-			new PrometheusTextFormatWriter(properties.getIncludeCreatedTimestamps()),
-			new OpenMetricsTextFormatWriter(
-				properties.getIncludeCreatedTimestamps(), properties.getExemplarsOnAllMetricTypes()));
+			PrometheusTextFormatWriter.builder()
+				.setIncludeCreatedTimestamps(properties.getIncludeCreatedTimestamps())
+				.setTimestampsInMs(properties.getPrometheusTimestampsInMs())
+				.build(),
+			OpenMetricsTextFormatWriter.builder()
+				.setCreatedTimestampsEnabled(properties.getIncludeCreatedTimestamps())
+				.setExemplarsOnAllMetricTypesEnabled(properties.getExemplarsOnAllMetricTypes())
+				.build());
 	}
 	
 	public ExpositionFormatWriter findWriter(final String acceptHeader)
