@@ -9,7 +9,7 @@ This module is designed to integrate with [Spring Boot Actuator (Prometheus)](ht
 
 ### Why remove Protobuf?
 
-1. [Prometheus Protobuf format is obsolete/experimental](https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md#protobuf-format), the chance that it's used is near 0
+1. [Prometheus Protobuf format is obsolete/experimental](https://github.com/prometheus/docs/blob/432c621b67906c7cbfcfc293853017d762201ccf/docs/instrumenting/exposition_formats.md#protobuf-format), the chance that it's used is near 0
 2. The additional library can result in additional attack vectors. For example in [CVE-2024-7254](https://github.com/protocolbuffers/protobuf/security/advisories/GHSA-735f-pc8j-v9w8)
     * If the dependency is [reshaded](https://maven.apache.org/plugins/maven-shade-plugin/) it may not be detected by vulnerability scanners (as is the case in ``io.prometheus:prometheus-metrics-exposition-formats <= 1.3.1``)
 3. The protobuf dependency is huge (around 10x bigger) in comparison to the other libraries
