@@ -1,4 +1,5 @@
 # 4.0.0
+_Added deprecation notice (see README of project for details)_
 * Updated to Spring Boot 4
 
 # 3.0.1
