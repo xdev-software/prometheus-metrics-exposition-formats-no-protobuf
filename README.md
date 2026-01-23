@@ -3,6 +3,10 @@
 
 # prometheus-metrics-exposition-formats-no-protobuf
 
+> [!IMPORTANT]
+> This library is deprecated.<br/>
+> You should exclude and replace `io.prometheus:prometheus-metrics-exposition-formats` with `io.prometheus:prometheus-metrics-exposition-textformats` instead.
+
 Reconfigures [prometheus-metrics-exposition-formats](https://github.com/prometheus/client_java) to remove [protobuf](https://github.com/protocolbuffers/protobuf).
 
 This module is designed to integrate with [Spring Boot Actuator (Prometheus)](https://docs.spring.io/spring-boot/api/rest/actuator/prometheus.html) or similar services.
