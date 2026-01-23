@@ -6,7 +6,7 @@
 
 	<groupId>software.xdev</groupId>
 	<artifactId>prometheus-metrics-exposition-formats-no-protobuf</artifactId>
-	<version>3.0.2-SNAPSHOT</version>
+	<version>4.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>prometheus-metrics-exposition-formats-no-protobuf</name>
@@ -53,13 +53,13 @@
 		<dependency>
 			<groupId>io.prometheus</groupId>
 			<artifactId>prometheus-metrics-exposition-textformats</artifactId>
-			<version>1.3.7</version>
+			<version>1.4.3</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter</artifactId>
-			<version>5.12.2</version>
+			<version>6.0.2</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -112,7 +112,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.14.0</version>
+				<version>3.14.1</version>
 				<configuration>
 					<release>${maven.compiler.release}</release>
 					<compilerArgs>
@@ -123,7 +123,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.11.2</version>
+				<version>3.12.0</version>
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
@@ -141,7 +141,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-				<version>3.3.1</version>
+				<version>3.4.0</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
@@ -156,19 +156,19 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.5.3</version>
+				<version>3.5.4</version>
 			</plugin>
 		</plugins>
 	</build>
 	<profiles>
 		<profile>
-			<id>publish-sonatype-central-portal</id>
+			<id>publish</id>
 			<build>
 				<plugins>
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>flatten-maven-plugin</artifactId>
-						<version>1.7.0</version>
+						<version>1.7.3</version>
 						<configuration>
 							<flattenMode>ossrh</flattenMode>
 						</configuration>
@@ -185,7 +185,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
-						<version>3.2.7</version>
+						<version>3.2.8</version>
 						<executions>
 							<execution>
 								<id>sign-artifacts</id>
@@ -204,11 +204,17 @@
 							</execution>
 						</executions>
 					</plugin>
-					
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>publish-sonatype-central-portal</id>
+			<build>
+				<plugins>
 					<plugin>
 						<groupId>org.sonatype.central</groupId>
 						<artifactId>central-publishing-maven-plugin</artifactId>
-						<version>0.7.0</version>
+						<version>0.10.0</version>
 						<extensions>true</extensions>
 						<configuration>
 							<publishingServerId>sonatype-central-portal</publishingServerId>
@@ -230,7 +236,7 @@
 							<dependency>
 								<groupId>com.puppycrawl.tools</groupId>
 								<artifactId>checkstyle</artifactId>
-								<version>10.23.1</version>
+								<version>13.0.0</version>
 							</dependency>
 						</dependencies>
 						<configuration>
@@ -255,24 +261,25 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-pmd-plugin</artifactId>
-						<version>3.26.0</version>
+						<version>3.28.0</version>
 						<configuration>
+							<analysisCache>true</analysisCache>
 							<includeTests>true</includeTests>
 							<printFailingErrors>true</printFailingErrors>
 							<rulesets>
-								<ruleset>../.config/pmd/ruleset.xml</ruleset>
+								<ruleset>../.config/pmd/java/ruleset.xml</ruleset>
 							</rulesets>
 						</configuration>
 						<dependencies>
 							<dependency>
 								<groupId>net.sourceforge.pmd</groupId>
 								<artifactId>pmd-core</artifactId>
-								<version>7.13.0</version>
+								<version>7.20.0</version>
 							</dependency>
 							<dependency>
 								<groupId>net.sourceforge.pmd</groupId>
 								<artifactId>pmd-java</artifactId>
-								<version>7.13.0</version>
+								<version>7.20.0</version>
 							</dependency>
 						</dependencies>
 					</plugin>

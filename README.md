@@ -1,8 +1,11 @@
 [![Latest version](https://img.shields.io/maven-central/v/software.xdev/prometheus-metrics-exposition-formats-no-protobuf?logo=apache%20maven)](https://mvnrepository.com/artifact/software.xdev/prometheus-metrics-exposition-formats-no-protobuf)
 [![Build](https://img.shields.io/github/actions/workflow/status/xdev-software/prometheus-metrics-exposition-formats-no-protobuf/check-build.yml?branch=develop)](https://github.com/xdev-software/prometheus-metrics-exposition-formats-no-protobuf/actions/workflows/check-build.yml?query=branch%3Adevelop)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=xdev-software_prometheus-metrics-exposition-formats-no-protobuf&metric=alert_status)](https://sonarcloud.io/dashboard?id=xdev-software_prometheus-metrics-exposition-formats-no-protobuf)
 
 # prometheus-metrics-exposition-formats-no-protobuf
+
+> [!IMPORTANT]
+> This library is deprecated.<br/>
+> You should exclude and replace `io.prometheus:prometheus-metrics-exposition-formats` with `io.prometheus:prometheus-metrics-exposition-textformats` instead.
 
 Reconfigures [prometheus-metrics-exposition-formats](https://github.com/prometheus/client_java) to remove [protobuf](https://github.com/protocolbuffers/protobuf).
 
@@ -10,7 +13,7 @@ This module is designed to integrate with [Spring Boot Actuator (Prometheus)](ht
 
 ### Why remove Protobuf?
 
-1. [Prometheus Protobuf format is obsolete/experimental](https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md#protobuf-format), the chance that it's used is near 0
+1. [Prometheus Protobuf format is obsolete/experimental](https://github.com/prometheus/docs/blob/432c621b67906c7cbfcfc293853017d762201ccf/docs/instrumenting/exposition_formats.md#protobuf-format), the chance that it's used is near 0
 2. The additional library can result in additional attack vectors. For example in [CVE-2024-7254](https://github.com/protocolbuffers/protobuf/security/advisories/GHSA-735f-pc8j-v9w8)
     * If the dependency is [reshaded](https://maven.apache.org/plugins/maven-shade-plugin/) it may not be detected by vulnerability scanners (as is the case in ``io.prometheus:prometheus-metrics-exposition-formats <= 1.3.1``)
 3. The protobuf dependency is huge (around 10x bigger) in comparison to the other libraries
@@ -24,6 +27,7 @@ _See also [prometheus/client_java#1173](https://github.com/prometheus/client_jav
 
 | ``io.prometheus:prometheus-metrics-exposition-formats`` version | ``prometheus-metrics-exposition-formats-no-protobuf`` version |
 | --- | --- |
+| 1.4.3+ | ``4`` (optional) |
 | 1.3.4+ | [``3`` (optional)](./CHANGELOG.md#300) |
 | 1.3.2+ | ``2`` |
 | < 1.3.2 | ``1`` |

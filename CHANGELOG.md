@@ -1,3 +1,7 @@
+# 4.0.0
+_Added deprecation notice (see README of project for details)_
+* Updated to Spring Boot 4
+
 # 3.0.1
 * Migrated deployment to _Sonatype Maven Central Portal_ [#155](https://github.com/xdev-software/standard-maven-template/issues/155)
 * Updated dependencies
